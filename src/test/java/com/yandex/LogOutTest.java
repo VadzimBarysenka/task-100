@@ -1,19 +1,20 @@
 package com.yandex;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebDriver;
-
-import java.util.concurrent.TimeUnit;
+import io.qameta.allure.Description;
+import io.qameta.allure.Story;
+import io.qameta.allure.TmsLink;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@DisplayName("LogOut functionality")
+@ExtendWith(ScreenShot.class)
 public class LogOutTest {
     private MailPage mailPage;
-    private final String USER_NAME = "someuserfortest";
-    private final String USER_PASSWORD = "!QAZxsw2";
-    private final String LOGIN_PAGE_TITLE = "Authorization";
+    private final static String USER_NAME = "someanotheruserfortest";
+    private final static String USER_PASSWORD = "#EDCvfr4";
+    private final static String LOGIN_PAGE_TITLE = "Authorizatio";
 
     @BeforeEach
     public void setup() {
@@ -22,11 +23,15 @@ public class LogOutTest {
         mailPage = loginPage.loginToMail(USER_NAME, USER_PASSWORD);
     }
 
-    @AfterEach
-    public void cleanup() {
+    @AfterAll
+    public static void cleanup() {
         WebDriverSingleton.getInstance().closeDriver();
     }
 
+    @Story("LogOut")
+    @Description("Verify that users successfully logged out from the app")
+    @DisplayName("Verify logout from the app")
+    @TmsLink("ID-102")
     @Test
     public void logout() {
         LoginPage afterLogout = mailPage.logout();

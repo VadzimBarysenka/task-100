@@ -1,5 +1,6 @@
 package com.yandex;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,6 +19,7 @@ public class EnterPage {
         this.driver.get(URL);
     }
 
+    @Step("Enter to [Login] page")
     public LoginPage enterToLoginPage() {
         enterButton.click();
         return new LoginPage();
