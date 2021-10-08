@@ -1,5 +1,6 @@
 package com.yandex;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -28,6 +29,7 @@ public class MailPage {
         return userName.getText();
     }
 
+    @Step("Logout from the app")
     public LoginPage logout() {
         userName.click();
         logOut.click();

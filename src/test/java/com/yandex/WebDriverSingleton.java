@@ -27,6 +27,7 @@ public class WebDriverSingleton {
     }
 
     public void closeDriver() {
+        instance = null;
         driver.close();
     }
 }

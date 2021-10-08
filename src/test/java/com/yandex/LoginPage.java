@@ -1,5 +1,8 @@
 package com.yandex;
 
+import com.google.common.base.Verify;
+import io.qameta.allure.Step;
+import org.junit.jupiter.api.DisplayName;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -22,6 +25,7 @@ public class LoginPage {
         this.driver = WebDriverSingleton.getInstance().getDriver();
     }
 
+    @Step("Login to mailbox")
     public MailPage loginToMail(String name, String password) {
         userNameField.sendKeys(name);
         loginButton.click();
